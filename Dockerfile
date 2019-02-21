@@ -14,7 +14,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
   && mkdir -p /usr/share/man/man1 \
   && apt-get install -y \
-    git mercurial xvfb ruby-full \
+    git mercurial xvfb \
     locales sudo openssh-client ca-certificates tar gzip parallel \
     net-tools netcat unzip zip bzip2 gnupg curl wget
 
@@ -24,7 +24,12 @@ RUN npm install --global bower
 # install gulp
 RUN npm install --global gulp
 
-# install compass
+# Install Ruby
+RUN \
+  apt-get install -y ruby ruby-dev ruby-bundler && \
+  rm -rf /var/lib/apt/lists/*
+
+# Install Compass
 RUN gem install compass
 
 # Set timezone to UTC by default
