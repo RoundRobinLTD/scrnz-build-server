@@ -32,7 +32,7 @@ RUN gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A
 
 # install rvm
 RUN curl -sSL https://get.rvm.io | bash -s stable --ruby \
-	&& export PATH=$PATH:/usr/local/rvm/scripts/rvm
+	&& source /usr/local/rvm/scripts/rvm
 	
 # install ruby
 RUN rvm install 1.9.3 \
