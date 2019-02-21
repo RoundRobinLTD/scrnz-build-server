@@ -25,8 +25,8 @@ RUN npm install --global bower
 RUN npm install --global gulp
 
 # install ruby
-RUN apt-get install -y -qq ruby-dev rubygems
-RUN apt-get install make
+RUN sudo apt-get install -y rubygems ruby-dev rubygems-integration ruby ruby-full libgemplugin-ruby
+RUN sudo apt-get install make
 
 # install compass
 RUN gem install --no-rdoc --no-ri compass
