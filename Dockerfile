@@ -26,7 +26,7 @@ RUN npm install --global gulp
 
 # Install Ruby
 RUN \
-  apt-get install -y ruby ruby-dev ruby-bundler && \
+  apt-get install -y ruby ruby-dev && \
   rm -rf /var/lib/apt/lists/*
 
 # Install Compass
