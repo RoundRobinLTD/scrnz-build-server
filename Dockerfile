@@ -33,7 +33,7 @@ RUN curl -L https://get.rvm.io | bash -s stable --ruby \
 	
 # install ruby
 RUN rvm install 1.9.3 \
-	&& rvm use 1.9.3
+	&& rvm use 1.9.3 \
 	&& rvm rubygems latest
 
 # install compass
