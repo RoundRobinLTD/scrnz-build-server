@@ -24,13 +24,12 @@ RUN npm install --global bower
 # install gulp
 RUN npm install --global gulp
 
-# Install Ruby
-RUN \
-  apt-get install -y ruby ruby-dev && \
-  rm -rf /var/lib/apt/lists/*
+# install ruby
+RUN apt-get install -y -qq ruby-dev
+RUN apt-get install make
 
-# Install Compass
-RUN gem install compass
+# install compass
+RUN gem install --no-rdoc --no-ri compass
 
 # Set timezone to UTC by default
 RUN ln -sf /usr/share/zoneinfo/Etc/UTC /etc/localtime
