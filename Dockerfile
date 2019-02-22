@@ -34,10 +34,11 @@ RUN curl -sSL https://rvm.io/pkuczynski.asc | gpg --import
 #RUN curl -sSL https://get.rvm.io | /bin/bash -s stable --ruby
 RUN curl -sSL https://get.rvm.io | /bin/bash -s stable --ruby
 # RUN source /usr/local/rvm/scripts/rvm
+RUN /bin/bash /etc/profile.d/rvm.sh
 
 # install RVM
-RUN rvm install 1.9.3 \
-RUN rvm use 1.9.3 \
+RUN rvm install 1.9.3
+RUN rvm use 1.9.3
 RUN rvm rubygems latest
 
 # install compass
