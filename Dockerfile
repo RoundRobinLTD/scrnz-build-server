@@ -37,9 +37,9 @@ RUN curl -sSL https://get.rvm.io | /bin/bash -s stable --ruby
 RUN /bin/bash /etc/profile.d/rvm.sh
 
 # install RVM
-RUN rvm install 1.9.3
-RUN rvm use 1.9.3
-RUN rvm rubygems latest
+RUN /usr/local/rvm/ install 1.9.3
+RUN /usr/local/rvm/ use 1.9.3
+RUN /usr/local/rvm/ rubygems latest
 
 # install compass
 RUN gem update --system \
