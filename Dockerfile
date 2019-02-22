@@ -35,6 +35,8 @@ RUN curl -sSL https://rvm.io/pkuczynski.asc | gpg --import
 RUN curl -sSL https://get.rvm.io | /bin/bash -s stable --ruby
 # RUN source /usr/local/rvm/scripts/rvm
 RUN /bin/bash /etc/profile.d/rvm.sh
+RUN for ID in $(cat /etc/passwd | grep /home | cut -d ':' -f1); \
+	do (adduser $ID rvm);done
 
 # install RVM
 RUN /usr/local/rvm/ install 1.9.3
