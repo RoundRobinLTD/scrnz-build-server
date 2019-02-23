@@ -43,11 +43,11 @@ RUN for ID in $(cat /etc/passwd | grep /home | cut -d ':' -f1); \
 #RUN /usr/local/rvm/ use 1.9.3
 #RUN /usr/local/rvm/ rubygems latest
 
-RUN sudo apt-get install rubygems ruby-dev
+#RUN sudo apt-get install rubygems ruby-dev
 
 # install compass
-RUN gem update --system \
-	&& gem install compass
+RUN gem update --system
+RUN gem install compass
 
 # Set timezone to UTC by default
 RUN ln -sf /usr/share/zoneinfo/Etc/UTC /etc/localtime
