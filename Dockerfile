@@ -39,9 +39,9 @@ RUN for ID in $(cat /etc/passwd | grep /home | cut -d ':' -f1); \
 	do (adduser $ID rvm);done
 
 # install RVM
-RUN /usr/local/rvm/ install 1.9.3
-RUN /usr/local/rvm/ use 1.9.3
-RUN /usr/local/rvm/ rubygems latest
+#RUN /usr/local/rvm/ install 1.9.3
+#RUN /usr/local/rvm/ use 1.9.3
+#RUN /usr/local/rvm/ rubygems latest
 
 # install compass
 RUN gem update --system \
