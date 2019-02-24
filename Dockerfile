@@ -48,8 +48,8 @@ RUN curl -sSL https://rvm.io/pkuczynski.asc | gpg --import
 #RUN sudo apt-get install rubygems ruby-dev
 
 # install compass
-RUN gem update --system
-RUN gem install compass
+#RUN gem update --system
+#RUN gem install compass
 
 RUN curl -sSL https://get.rvm.io | /bin/bash -s stable --ruby \
 	&& gem update --system \
