@@ -52,8 +52,8 @@ RUN curl -sSL https://rvm.io/pkuczynski.asc | gpg --import
 #RUN gem install compass
 
 RUN curl -sSL https://get.rvm.io | /bin/bash -s stable --ruby \
-	&& gem update --system \
-	&& gem install compass
+	&& /usr/local/rvm/gems/ruby-2.6.0/gem update --system \
+	&& /usr/local/rvm/gems/ruby-2.6.0/gem install compass
 
 # Set timezone to UTC by default
 RUN ln -sf /usr/share/zoneinfo/Etc/UTC /etc/localtime
