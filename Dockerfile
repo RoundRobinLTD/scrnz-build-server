@@ -92,7 +92,9 @@ RUN curl -sSL https://rvm.io/pkuczynski.asc | gpg --import
 #RUN gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 #RUN curl -sSL https://get.rvm.io | /bin/bash -s stable --ruby
 
-#RUN curl -sSL https://get.rvm.io | /bin/bash -s stable --ruby
+RUN curl -sSL https://get.rvm.io | /bin/bash -s stable --ruby \
+	&& ruby -v \
+	&& gem -v
 
 # RUN source /usr/local/rvm/scripts/rvm
 #RUN /bin/bash /etc/profile.d/rvm.sh
@@ -109,8 +111,6 @@ RUN curl -sSL https://rvm.io/pkuczynski.asc | gpg --import
 # install compass
 #RUN gem update --system
 #RUN gem install compass
-
-RUN gem env
 
 #RUN curl -sSL https://get.rvm.io | /bin/bash -s stable --ruby \
 #	&& gem update --system \
