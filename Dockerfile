@@ -84,7 +84,7 @@ RUN npm install --global bower
 RUN npm install --global gulp
 
 # install dependencies
-RUN apt-get install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config
+RUN apt-get install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config ruby-full
 
 # install GPG keys
 RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import -
@@ -94,7 +94,9 @@ RUN curl -sSL https://rvm.io/pkuczynski.asc | gpg --import
 
 RUN curl -sSL https://get.rvm.io | /bin/bash -s stable --ruby
 RUN /bin/bash -c "source /usr/local/rvm/scripts/rvm"
-RUN gem -v
+RUN rvm install 2.5.1
+RUN rvm use 2.5.1 --default
+RUN ruby -v
 
 #RUN /bin/bash /etc/profile.d/rvm.sh
 #RUN for ID in $(cat /etc/passwd | grep /home | cut -d ':' -f1); \
