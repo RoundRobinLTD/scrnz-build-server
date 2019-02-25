@@ -84,13 +84,11 @@ RUN npm install --global bower
 RUN npm install --global gulp
 
 RUN apt-get update \
-  && apt-get install -y ruby-full \
-  && ruby -v \
-  && gem -v
+  && apt-get install -y ruby-full
   
 RUN ruby -v
 RUN gem -v
-RUN gem update --system
+#RUN gem update --system
 RUN gem install compass
 
 # install dependencies
