@@ -84,23 +84,25 @@ RUN npm install --global bower
 RUN npm install --global gulp
 
 RUN apt-get update \
-  && apt-get install -y \
-    ruby-full
+  && apt-get install -y ruby-full \
+  && ruby -v \
+  && gem -v
+  
+RUN ruby -v
+RUN gem -v
+RUN gem update --system
+RUN gem install compass
 
 # install dependencies
-RUN apt-get install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config
+#RUN apt-get install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config
 
 # install GPG keys
-RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import -
-RUN curl -sSL https://rvm.io/pkuczynski.asc | gpg --import 
-#RUN gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+#RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+#RUN curl -sSL https://rvm.io/pkuczynski.asc | gpg --import 
 #RUN curl -sSL https://get.rvm.io | /bin/bash -s stable --ruby
-
-RUN curl -sSL https://get.rvm.io | /bin/bash -s stable --ruby
-RUN /bin/bash -c "source /usr/local/rvm/scripts/rvm"
-RUN rvm install 2.5.1
-RUN rvm use 2.5.1 --default
-RUN ruby -v
+#RUN /bin/bash -c "source /usr/local/rvm/scripts/rvm"
+#RUN rvm install 2.5.1
+#RUN rvm use 2.5.1 --default
 
 #RUN /bin/bash /etc/profile.d/rvm.sh
 #RUN for ID in $(cat /etc/passwd | grep /home | cut -d ':' -f1); \
