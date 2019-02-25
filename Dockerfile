@@ -18,43 +18,6 @@ RUN apt-get update \
     locales sudo openssh-client ca-certificates tar gzip parallel \
     net-tools netcat unzip zip bzip2 gnupg curl wget
 
-# install bower
-RUN npm install --global bower
-
-# install gulp
-RUN npm install --global gulp
-
-# install dependencies
-RUN apt-get install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config
-
-# install GPG keys
-RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import -
-RUN curl -sSL https://rvm.io/pkuczynski.asc | gpg --import 
-#RUN gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-#RUN curl -sSL https://get.rvm.io | /bin/bash -s stable --ruby
-
-#RUN curl -sSL https://get.rvm.io | /bin/bash -s stable --ruby
-
-# RUN source /usr/local/rvm/scripts/rvm
-#RUN /bin/bash /etc/profile.d/rvm.sh
-#RUN for ID in $(cat /etc/passwd | grep /home | cut -d ':' -f1); \
-#	do (adduser $ID rvm);done
-
-# install RVM
-#RUN /usr/local/rvm/ install 1.9.3
-#RUN /usr/local/rvm/ use 1.9.3
-#RUN /usr/local/rvm/ rubygems latest
-
-#RUN sudo apt-get install rubygems ruby-dev
-
-# install compass
-#RUN gem update --system
-#RUN gem install compass
-
-RUN curl -sSL https://get.rvm.io | /bin/bash -s stable --ruby \
-	&& /usr/local/rvm/gems/ruby-2.6.0/gem update --system \
-	&& /usr/local/rvm/gems/ruby-2.6.0/gem install compass
-
 # Set timezone to UTC by default
 RUN ln -sf /usr/share/zoneinfo/Etc/UTC /etc/localtime
 
@@ -111,6 +74,47 @@ RUN groupadd --gid 3434 circleci \
   && echo 'Defaults    env_keep += "DEBIAN_FRONTEND"' >> /etc/sudoers.d/env_keep
 
 # BEGIN IMAGE CUSTOMIZATIONS
+
+# *******************************************************************************************************************************************
+
+# install bower
+RUN npm install --global bower
+
+# install gulp
+RUN npm install --global gulp
+
+# install dependencies
+RUN apt-get install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config
+
+# install GPG keys
+RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+RUN curl -sSL https://rvm.io/pkuczynski.asc | gpg --import 
+#RUN gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+#RUN curl -sSL https://get.rvm.io | /bin/bash -s stable --ruby
+
+#RUN curl -sSL https://get.rvm.io | /bin/bash -s stable --ruby
+
+# RUN source /usr/local/rvm/scripts/rvm
+#RUN /bin/bash /etc/profile.d/rvm.sh
+#RUN for ID in $(cat /etc/passwd | grep /home | cut -d ':' -f1); \
+#	do (adduser $ID rvm);done
+
+# install RVM
+#RUN /usr/local/rvm/ install 1.9.3
+#RUN /usr/local/rvm/ use 1.9.3
+#RUN /usr/local/rvm/ rubygems latest
+
+#RUN sudo apt-get install rubygems ruby-dev
+
+# install compass
+#RUN gem update --system
+#RUN gem install compass
+
+RUN gem env
+
+#RUN curl -sSL https://get.rvm.io | /bin/bash -s stable --ruby \
+#	&& gem update --system \
+#	&& gem install compass
 
 # END IMAGE CUSTOMIZATIONS
 
