@@ -87,7 +87,16 @@ RUN npm install --global gulp
 #  && apt-get install -y ruby-full
 
 RUN apt-get update
-RUN apt-get install -y libssl-dev && wget http://ftp.ruby-lang.org/pub/ruby/2.6/ruby-2.6.1.tar.gz &&     tar -xzvf ruby-2.6.1.tar.gz &&     cd ruby-2.6.1/ &&     ./configure &&     make -j4 &&     make install &&     ruby -v &&     gem install compass
+RUN apt-get install -y libssl-dev && \
+	wget http://ftp.ruby-lang.org/pub/ruby/2.6/ruby-2.6.1.tar.gz && \
+    tar -xzvf ruby-2.6.1.tar.gz && \
+    cd ruby-2.6.1/ && \
+    ./configure && \
+    make -j4 && \
+    make install && \
+    ruby -v && \
+    gem install compass sass compass-import-once sass-globbing && \
+	gem install animation --pre
 
 # END IMAGE CUSTOMIZATIONS
 
